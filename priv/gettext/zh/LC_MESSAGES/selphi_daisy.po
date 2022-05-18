@@ -1,0 +1,27 @@
+## "msgid"s in this file come from POT (.pot) files.
+##
+## Do not add, change, or remove "msgid"s manually here as
+## they're tied to the ones in the corresponding POT file
+## (with the same domain).
+##
+## Use "mix gettext.extract --merge" or "mix gettext.merge"
+## to merge POT files into PO files.
+msgid ""
+msgstr ""
+"Language: zh\n"
+"Plural-Forms: nplurals=1\n"
+
+#, elixir-autogen, elixir-format
+#: lib/selphi_daisy/form/live_file_input.ex:68
+msgid "Too large"
+msgstr "文件太大了！！！"
+
+#, elixir-autogen, elixir-format
+#: lib/selphi_daisy/form/live_file_input.ex:70
+msgid "Too many files"
+msgstr "文件太多了！！！"
+
+#, elixir-autogen, elixir-format
+#: lib/selphi_daisy/form/live_file_input.ex:69
+msgid "You have selected an unacceptable file type"
+msgstr "不支持的文件类型！！！"
