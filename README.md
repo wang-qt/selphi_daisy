@@ -635,12 +635,44 @@ end
 ```
 
 
+添加 priv/static/icons静态目录
+
+### 4.13 修改selphi_cms_web.ex
+
+```elixir
+defmodule SelphiCmsWeb do
+...
+  # add by wqt
+  def  surface_view do
+    quote do
+      use Surface.LiveView,
+          layout: {SelphiCmsWeb.LayoutView, "live.html"}
+
+      unquote(view_helpers())
+    end
+  end
+...
+end
+```
+
+添加  surface_view , 然后 liveview页面，可以直接使用
+
+```elixir
+defmodule SelphiCmsWeb.Live.Tables.PostTable do
+  @moduledoc """
+  探索一个完整的 table liveview 的设计实现。
+  最终 这个liveveiw 会嵌入普通模版使用，并能动态的设置数据源，
+  """
+  use SelphiCmsWeb, :surface_view
+...
+end
+```
 
 喔，确实需要配置很多东西！参见[selphi_cms](https://github.com/wang-qt/selphi_cms)，是一个完整的例子。
 
 
 
-## 5. 简单实用
+## 5. 简单使用
 
 程序正常启动后，访问 http://localhost:4000/catalogue ，可以查看selphi_daisy组件的文档和使用实例。包含了组件几乎所有的使用方法。
 
