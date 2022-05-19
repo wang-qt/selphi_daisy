@@ -422,10 +422,34 @@ module.exports = {
 }
 
 ```
-
 在 assets目录下创建postcss.config.js
+### 4.8 创建 tailwind.config.js
+```js
+module.exports = {
+  // !!! 监控组件库 selphi_daisy 的 class
+  content: [
+    '../lib/selphi_cms_web/live/**/*.{heex,ex,sface}',
+    '../lib/selphi_cms_web/components/**/*.{heex,ex,sface}',
+    '../lib/selphi_cms_web/controls/**/*.{heex,ex,sface}',
+    '../lib/selphi_cms_web/templates/**/*.{heex,ex,sface}',
+    //  监控 selphi_daisy 的 class 进行pruge
+    '../deps/selphi_daisy/lib/selphi_daisy/**/*.{heex,ex,sface}',
+    '../deps/selphi_daisy/priv/catalogue/**/*.{heex,ex,sface}',
+    '../priv/catalogue/**/*.{heex,ex,sface}',
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [
+    require("@tailwindcss/typography"),
+    require('daisyui'),
+  ],
+}
+```
+在 assets目录下创建tailwind.config.js
+**注意：tailwind要在打包时进行裁剪，删除没有使用的原子类。这里配置让tailwind删除原子类时，保留selphi_daisy组件使用的class。有没有更好的办法呢？？**
 
-### 4.8  创建webpack.config.js
+### 4.9  创建webpack.config.js
 
 ```js
 const path = require('path');
@@ -495,7 +519,7 @@ module.exports = (env, options) => {
 
 在 assets目录下创建postcss.config.js
 
-### 4.9 修改app.scss
+### 4.10 修改app.scss
 
  首先把 app.css 改名为 app.scss，phoenix.css改为phoenix.scss
 
@@ -521,7 +545,7 @@ module.exports = (env, options) => {
 
 
 
-### 4.10  修改app.js
+### 4.11  修改app.js
 
 ```js
 // We import the CSS which is extracted to its own file by esbuild.
@@ -594,7 +618,7 @@ app.js 还可以添加**全局事件监听处理函数**。
 
 
 
-### 4.11 修改 router.ex
+### 4.12 修改 router.ex
 
 ```elixir
 defmodule SelphiCmsWeb.Router do
@@ -617,7 +641,7 @@ end
 
 
 
-### 4.12 修改endpoint.ex
+### 4.13 修改endpoint.ex
 
 ```elixir
 defmodule SelphiCmsWeb.Endpoint do
@@ -637,7 +661,7 @@ end
 
 添加 priv/static/icons静态目录
 
-### 4.13 修改selphi_cms_web.ex
+### 4.14 修改selphi_cms_web.ex
 
 ```elixir
 defmodule SelphiCmsWeb do
